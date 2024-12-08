@@ -1,59 +1,53 @@
-# MyWorkspace01
+add install
+@angular/material
+@angular/cdk
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.1.
+Signals for Angular Reactvity
+Sub-RFC1:...
 
-## Development server
+なぜ新しいリアクティブプリミティブが必要なのでしょうか?
+モデル駆動型 Web アプリケーションでは、フレームワークの主な仕事の 1 つは、
+アプリケーションのデータ モデルと UI への変更を同期することです。
+このメカニズムをリアクティブと呼び、
+最新の Web フレームワークにはそれぞれ独自の リアクティブ システムがあります。
 
-To start a local development server, run:
+現在、Angular のリアクティブ性はライブラリに依存しています
+zone.js。 のリアクティブ性にはzone.js独自の利点と独自の課題があり、
+これについては以下で詳しく説明します (「zone.js を使い続けないのはなぜか?」を参照)。
+重要なのは、zone.jsモデルの変更に関する「きめ細かい」情報を提供しないことです。
+Zone.js は、アプリケーションで何かが発生した可能性がある場合に通知することしかできず、
+何が起こったか、何が変更されたかについての情報は提供できません。
 
-```bash
-ng serve
-```
+主な目標 (トップレベルの RFC 目標を参照) を達成するには、 
+で実現できる以上の機能を備えた新しいリアクティブ モデルを 
+Angular に導入する必要がありますzone.js。
+つまり、モデルの変更に関するきめ細かい情報を提供できる新しい
+プリミティブをフレームワークに追加する必要があります。
+Angular Signals の主な設計目標は、
+これら 2 つのリアクティブ モデルの統合を可能な限りシームレスかつ簡単にすることです。
+これにより、開発者はアプリケーションで変更検出がどのように機能するかを考えるのではなく、
+機能のリリースに集中できます。
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+新しいリアクティブプリミティブの要件
+新しいリアクティブ アプローチを決定する前に、
+新しいリアクティブ ソリューションに必要なプロパティであるいくつかの要件を設定しました。
 
-## Code scaffolding
+個々のコンポーネントに影響するモデルの変更について 
+Angular に通知できる必要があります (全体的な目標に従って)。
+テンプレート バインディングには常に現在の値が必要なため、
+モデルへの同期アクセスを提供する必要があります。
+値の読み取りには副作用があってはなりません。
+_glitch fre_e である必要があります。
+つまり、値を読み取っても矛盾した状態が返されることはありません。
+依存関係の追跡は人間工学に基づいている必要があります。
+議論ポイント 1A : 考慮すべき他の要件はありますか?
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+検討されたオプション
+私たちは、次のようなさまざまな代替案を試しました。
 
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+zone.js の改善
+setStateスタイルのAPI
+信号
+RxJS
+コンパイラベースのリアクティブ性
+プロキシ
