@@ -1,0 +1,46 @@
+
+
+
+
+<label>Message:</label>
+<p>{{ model.message }}</p>
+
+<h1>User profile</h1>
+
+@if (isAdmin()) {
+  <h2>Admin settings</h2>
+ }
+  @else {
+    <h2>User settings</h2>
+    
+  }  
+  
+  <ul class="course-list">
+    @for (course of courses; track course.id) {
+      <li class="course">{{course.description}}</li>
+
+      <!-- @switch(course.category){
+        @case("BEGINNER"){
+        <div class = "category">Beginner</div>
+        }
+        @case("INTERMEDIATE"){
+        <div class = "category">Intermediate</div>
+        }
+         @case("ADVANCED"){
+        <div class = "category">Advanced</div>
+        }
+         @default{
+         <div class = "category">Unknown</div>
+        }
+      }       -->
+    }
+    @empty {
+        <h1>No courses found</h1>
+    }
+    
+  </ul>
+
+  <button (click)="incremental()">Click</button>
+  <h1>{{counter().value}}</h1> 
+  
+  
