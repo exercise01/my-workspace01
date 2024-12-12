@@ -43,7 +43,7 @@ export class HomeComponent  {
     }
     catch(err){
       alert(`Error loading courses!`);
-      console.error(err);
+      console.log(err);
     }
   }
 }
