@@ -6,9 +6,22 @@
   </a>
   </li>
   <li>
-    <a  routerLink="/login"> 
+    @if(isLoggedIn()) {
+      <a   (click)="onLogout()">        
+        <span>Logout</span>
+      </a>
+    }
+    @else {
+      <a  routerLink="login">        
         <span>Login</span>
-    </a>
+      </a>
+    }    
   </li>
   </div>
   <router-outlet></router-outlet>
+
+  
+
+  <!-- <a  routerLink="/login"> 
+    <span>Login</span>
+</a> -->
