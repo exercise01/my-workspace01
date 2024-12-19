@@ -1,0 +1,31 @@
+
+<div class="login">
+
+    <div class="login-form" [formGroup]="form">
+  
+      <h3>Login Page</h3>
+      <p>email: "test&#64;devgmovile.com"</p>
+      <p>password: "test"</p>
+  
+      <div class="form-control">
+        <label>Email:</label>
+        <input placeholder="Enter your email" formControlName="email">
+      </div>
+  
+      <div class="form-control">
+        <label>Password:</label>
+        <input type="password" formControlName="password"
+               placeholder="Enter your password">
+      </div>
+  
+    </div>
+  
+    <div class="form-actions">
+      <button class="btn" routerLink="/home">Home</button>
+  
+      <button class="btn" (click)="onLogin()">Login</button>
+  
+    </div>
+  
+  </div>
+  

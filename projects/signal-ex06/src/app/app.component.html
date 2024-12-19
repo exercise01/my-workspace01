@@ -1,0 +1,27 @@
+<div class="panel">
+  <h1>{{title}}</h1>
+  <li>
+  <a  routerLink="/"> 
+      <span>Home</span>
+  </a>
+  </li>
+  <li>
+    @if(isLoggedIn()) {
+      <a   (click)="onLogout()">        
+        <span>Logout</span>
+      </a>
+    }
+    @else {
+      <a  routerLink="login">        
+        <span>Login</span>
+      </a>
+    }    
+  </li>
+  </div>
+  <router-outlet></router-outlet>
+
+  
+
+  <!-- <a  routerLink="/login"> 
+    <span>Login</span>
+</a> -->

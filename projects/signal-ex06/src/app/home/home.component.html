@@ -1,0 +1,46 @@
+
+<div class="courses-panel">
+    <p>home works!</p> 
+    <h3>All Courses:</h3>            
+ 
+<button class="btn" (click)="onAddCourse()">
+  Add Course
+</button> 
+</div> 
+
+<!-- <div *ngFor="let course of courses" > -->
+  <!-- <div>{{allCourses()}}</div> -->
+  <!-- <div>{{course.description}}</div>
+  <div>{{course.longDescription}}</div>
+  <div>{{course.category}}</div> -->
+<!-- </div> -->
+
+<!-- <div [oncourses] = "allCourses()"> -->
+<!-- <div (courseUpdated)="onCourseUpdated($event)">   -->
+
+@for(course of courses(); track course.id) {
+<div >
+  <div>{{course.description}}</div>
+  <div>{{course.longDescription}}</div>
+  <div>{{course.category}}</div> 
+  
+</div>
+<!-- </div> -->
+<!-- </div> -->
+<div class="course-actions">
+  
+  <button class="btn" (click)="onEditCourse(course)">
+    EDIT
+  </button > 
+  <button class="btn" (click)="onCourseDeleted(course)">
+    Delete
+  </button> 
+</div>
+}
+
+<!-- (click)="onCourseDelete(course)" -->
+
+<!-- <button class="btn"
+          [routerLink]="['courses', course.id]" >
+    VIEW COURSE
+  </button> -->

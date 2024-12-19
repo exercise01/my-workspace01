@@ -1,0 +1,43 @@
+
+
+<div class="edit-course-form" [formGroup]="form">
+
+  <h3>{{data.title}}</h3>
+
+  <div class="form-control">
+    <label>Description:</label>
+    <input placeholder="Enter"
+           formControlName="description">
+  </div>
+
+  <div class="form-control">
+    <label>LongDescription:</label>
+    <textarea placeholder="Enter"
+      formControlName="longDescription">
+    </textarea>
+  </div>
+
+  <course-category-combobox
+    label="Course category"
+    [(value)]="category"
+  />
+
+  <!-- <div class="form-control">
+    <label>Course image:</label>
+    <input placeholder="Enter course title"
+      formControlName="iconUrl">
+  </div> -->
+
+  <div class="form-actions">
+
+    <button class="btn" (click)="onSave()">
+      Save
+    </button>
+
+    <button class="btn" (click)="onClose()">
+      Cancel
+    </button>
+
+  </div>
+
+</div>
